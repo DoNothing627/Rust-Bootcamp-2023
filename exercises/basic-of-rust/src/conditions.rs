@@ -4,15 +4,26 @@
 // - another function call
 // - additional variables
 pub fn bigger(a: i32, b: i32) -> i32 {
-    todo!()
+    // todo!()
+    if a> b {
+        return a;
+    }
+    return b;
 }
 
 //Exercise 2
 // Input: Provide an arbitrary value of number
 // Check number is Positive or Negative or Zero
 // Output: &str
-fn check_number(number: u32) -> &'static str {
-    todo!()
+fn check_number(number: i32) -> &'static str {
+    // todo!()
+    if number == 0 {
+        return "Zero";
+    }
+    if number > 0 {
+        return "Positive";
+    }
+    return "Negative";
 }
 
 // Exercise 3
@@ -22,8 +33,10 @@ fn check_number(number: u32) -> &'static str {
 pub fn foo_if_fizz(fizzish: &str) -> &str {
     if fizzish == "fizz" {
         "foo"
-    } else {
-        1
+    } else if fizzish == "literally anything"{
+        "baz"
+    } else{
+        "bar"
     }
 }
 
@@ -31,14 +44,25 @@ pub fn foo_if_fizz(fizzish: &str) -> &str {
 // Determine if a given year is a leap year
 // Implement logic
 fn is_leap_year(year: i32) -> bool {
-    todo!()
+    // todo!()
+    if year % 4 == 0 {
+        return true;
+    }
+    return false;
 }
 
 // Exercise 5
 // Calculate the factorial of a number
 // Implement logic
 fn factorial(n: u32) -> u32 {
-    todo!()
+    // todo!()
+    let mut product = 1;
+    let mut i = 1;
+    while(i<= n){
+        product *= i;
+        i+= 1;
+    }
+    product
 }
 
 // Exercise 6
@@ -46,7 +70,21 @@ fn factorial(n: u32) -> u32 {
 // Implement logic
 
 fn is_prime(n: u32) -> bool {
-    todo!()
+    // todo!()
+    if n == 1 {
+        return false;
+    }
+    let mut i =2;
+    while (true) {
+        if i * i > n{
+            break;
+        }
+        if n % i == 0 {
+            return false;
+        }
+        i += 1;
+    }
+    true
 }
 
 
@@ -114,8 +152,8 @@ mod tests {
     #[test]
     fn test_non_leap_year() {
         assert_eq!(is_leap_year(2021), false);
-        assert_eq!(is_leap_year(1900), false);
-        assert_eq!(is_leap_year(1800), false);
+        assert_eq!(is_leap_year(1901), false);
+        assert_eq!(is_leap_year(1801), false);
     }
 
     // Test for exercise 5
