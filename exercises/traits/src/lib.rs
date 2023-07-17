@@ -13,10 +13,24 @@ trait Hello {
 //TODO 
 struct Student {}
 impl Hello for Student {
+    fn say_hi(&self) -> String {
+        String::from("hi")
+    }
+
+    fn say_something(&self) -> String{
+        String::from("I am a student")
+    }
 }
 //TODO
 struct Teacher {}
 impl Hello for Teacher {
+    fn say_hi(&self) -> String {
+        String::from("hi")
+    }
+
+    fn say_something(&self) -> String{
+        String::from("I am a teacher")
+    }
 }
 
 
@@ -24,6 +38,8 @@ impl Hello for Teacher {
 // Make it compile in unit test for exercise 2
 // Hint: use #[derive]  for struct Point 
 // Run tests
+
+#[derive(Debug, PartialEq, PartialOrd)]
 struct Point {
     x: i32,
     y: i32,
@@ -35,7 +51,7 @@ struct Point {
 // Implement `fn sum` with trait bound in two ways.
 // Run tests
 // Hint: Trait Bound
-fn sum<T>(x: T, y: T) -> T {
+fn sum<T: std::ops::Add<Output = T>>(x: T, y: T) -> T {
     x + y
 }
 
